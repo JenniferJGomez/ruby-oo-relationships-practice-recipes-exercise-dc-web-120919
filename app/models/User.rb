@@ -13,5 +13,15 @@ class User
         @@all
     end
 
+    def cards
+        RecipeCard.all.select {|card| card.user == self}
+    end 
+    
+    def recipes
+        self.cards.map do |rc|
+            rc.recipes
+        end
+    end
+
 
 end
